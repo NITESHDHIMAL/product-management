@@ -1,19 +1,17 @@
-import React from 'react'
-
-// const Product = (props) => {
-const Product = (parentdata) => {
-
-    console.log("all parent data", parentdata)
-
+import React from 'react' 
+import { Link } from 'react-router' 
+ 
+const Product = (parentdata) => { 
     return (
         <>
-            {parentdata?.parentdata?.map((data) => (
-            <div>
-                name:{data?.name}
-                description:{data?.description}
-                image:{data?.image}
-                price:{data?.price}
-            </div>
+            {parentdata?.parentdata?.map((data,i) => (
+                <div key={i}>
+                   <Link to={`${i}`}> <h1>{data?.name}</h1></Link>
+                    <p>{data?.description}</p> <br />
+                    <img src={data?.image} alt={data?.name} width={200}/>
+                    <span>{data?.price}</span>
+                    <hr />
+                </div>
             ))}
 
         </>
